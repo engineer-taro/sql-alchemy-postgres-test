@@ -1,0 +1,18 @@
+version: "3.5"
+
+networks:
+  container-link:
+    driver: bridge
+
+services:
+  db:
+    container_name: db-test
+    env_file: ./.env
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - container-link

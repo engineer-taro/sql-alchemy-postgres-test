@@ -2,7 +2,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm.session import sessionmaker
 
-from layer.database import settings
+from database import settings
+import sys
+# moduleのimportエラーが出る場合は以下にappフォルダへの絶対パスを記載
+# sys.path.append("c:\\Users\\user.name\\~~~~~~\\SQL_docker_env\\app")
 
 
 _DATABASE = 'postgresql+psycopg2://%(user)s:%(password)s@%(host)s:%(port)s/%(dbname)s' % {

@@ -1,49 +1,12 @@
-from layer.database.model.table import MasterUser
-from layer.database import session
-from sqlalchemy import or_
-
-
-def add(id):
-    user = MasterUser(
-        id=id
-    )
-    try:
-        session.add(user)
-        session.commit()
-    except Exception as e:
-        session.rollback()
-        print(e)
-    finally:
-        session.close()
-
-
-def add_all(ids: list):
-    users = [MasterUser(id=id) for id in ids]
-    try:
-        session.add_all(users)
-        session.commit()
-    except Exception as e:
-        session.rollback()
-        print(e)
-    finally:
-        session.close()
-
-
-def find_all(ids: list) -> list:
-    filter = [MasterUser.id == id for id in ids]
-    try:
-        users = session.query(
-            MasterUser.id
-        ).filter(or_(*filter)).all()
-        return users
-    except Exception as e:
-        print(e)
+from repository import user_repository, user_score_repository
+from database import session
+from database.model.master import UserScore, MasterUser
 
 
 if __name__ == '__main__':
-    # Input test code. JP:テストしたいコードを記載
-    add(1)
-    add_all([4, 5, 6])
-    exists_users = find_all([1, 2, 3])
-    for user in exists_users:
-        print(user.id)
+    # テストしたいコードを記載
+    user_repository.add_all([1, 2, 3, 4, 5])
+    user_repository.find_all([1, 2, 3, 4, 5])
+
+    user_score_repository.add(1, 'Math', 98)
+    user_score_repository.get_join(1)

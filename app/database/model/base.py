@@ -1,6 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-
-from layer.database import session
+from database import session
 
 
 Base = declarative_base()

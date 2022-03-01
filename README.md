@@ -22,7 +22,8 @@
 参考: https://qiita.com/enya314/items/0e62b68fe70f52a628bf
 
 1. `python -m venv sql_alchemy_postgres_test_env`を実行
-1. `pip install -r requirements.txt`を実行
+2. `sql_alchemy_postgres_test_env/Scripts/activate`を実行し仮想環境を起動
+3. `pip install -r requirements.txt`を実行
 
 ## テストしたいコードの実装
 
